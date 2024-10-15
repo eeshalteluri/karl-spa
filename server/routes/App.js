@@ -3,6 +3,10 @@ import { getEmployees, addEmployee, removeEmployee, updateEmployee } from '../co
 
 const router = express.Router()
 
+router.get('/', (req, res) => {
+    res.send('Hello!')
+})
+
 router.get('/api/employees', getEmployees)
 
 router.post('/api/employees', addEmployee)
