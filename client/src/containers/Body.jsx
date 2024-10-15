@@ -9,7 +9,7 @@ const Body = () => {
 const { employees} = useEmployees()
 
   return (
-    <div className='mt-4 grid grid-cols-1 md:grid md:grid-cols-4 md:gap-4'>
+    <div className='h-full mt-4 grid grid-cols-1 md:grid md:grid-cols-4 md:gap-4'>
       {employees && employees.map((employee) => (
         <InfoCard 
         key={employee._id} 
