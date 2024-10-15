@@ -4,7 +4,7 @@ import { getEmployees, addEmployee, removeEmployee, updateEmployee } from '../co
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.send('Hello!')
+    res.status(200).json({ status: 'OK', message: 'Server is running' })
 })
 
 router.get('/api/employees', getEmployees)
