@@ -38,7 +38,7 @@ const AddEmployee = ({closeModal}) => {
         
         try{
             console.log('employee data before sending: ', employee)
-            await setEmployee(addEmployee)
+            await addEmployee(employee)
             
             console.log('submitted')
             console.log("Employee added: ", employee)
