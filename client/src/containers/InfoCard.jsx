@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import { useEmployees } from '../context/EmployeeProvider'
 
 import Modal from './Modal'
-import UpdateEmployee from './updateEmployee'
+import UpdateEmployee from './UpdateEmployee'
 
 
 const InfoCard = ({id, email, firstName, lastName, phone, company}) => {
