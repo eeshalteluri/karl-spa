@@ -24,7 +24,7 @@ const App = () => {
   return (
     <>
     <EmployeeProvider>
-      <div className='bg-primary text-white p-5 h-screen'>
+      <div className='bg-primary text-white p-5 h-full md:h-screen'>
         <Navbar />
         <Button openmodal={openModal} text='Add Employee'/>
 
