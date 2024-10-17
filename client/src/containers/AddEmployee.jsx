@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { useEmployees } from '../context/EmployeeProvider'
+import toast from 'react-hot-toast'
 
 const AddEmployee = ({closeModal}) => {
     const { addEmployee } = useEmployees()
@@ -35,11 +36,18 @@ const AddEmployee = ({closeModal}) => {
 
     const submitHandler = async (e) => {
         setIsSubmitting(true)
+
+        
         
         try{
             console.log('employee data before sending: ', employee)
-            await addEmployee(employee)
-            
+
+            toast.promise(addEmployee(employee), {
+              loading: 'Adding employee...',
+              success: 'Employee added successfully',
+              error: 'Error adding employee'
+          })
+                      
             console.log('submitted')
             console.log("Employee added: ", employee)
             closeModal()
@@ -50,6 +58,8 @@ const AddEmployee = ({closeModal}) => {
             setIsSubmitting(false)
         }
     }
+
+    
 
     
   return (
@@ -127,7 +137,7 @@ const AddEmployee = ({closeModal}) => {
         </div>
 
         <div className='flex justify-end'>
-        <button type='button' onClick={ closeModal } className='font-bold text-[#ef4444] p-2 rounded mt-4 mr-2'>CLOSE</button>
+        <button type='button' onClick={ closeModal } className={isSubmitting ? 'font-bold text-[#ef4444] p-2 rounded mt-4 mr-2 cursor-not-allowed': 'font-bold text-[#ef4444] p-2 rounded mt-4 mr-2'}>CLOSE</button>
         <button 
         type='submit' 
         className={isSubmitting? 'border py-2 px-6 rounded mt-4 bg-primary text-white font-bold cursor-not-allowed': 'border py-2 px-6 rounded mt-4 bg-primary text-white font-bold'}>{ isSubmitting? 'Saving...' : 'SAVE CHANGES'}</button>

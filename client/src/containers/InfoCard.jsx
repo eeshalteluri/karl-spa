@@ -1,6 +1,8 @@
 import React, { useState} from 'react'
 import { useEmployees } from '../context/EmployeeProvider'
 
+import { toast } from 'react-hot-toast'
+
 import Modal from './Modal'
 import UpdateEmployee from './UpdateEmployee'
 
@@ -16,6 +18,15 @@ const InfoCard = ({id, email, firstName, lastName, phone, company}) => {
 
   const closeModal = () => {
     setIsEditing(false)
+  }
+
+  const removingEmployee = (id) => () => {
+    
+    toast.promise(removeEmployee(id), {
+      loading: 'Removiing employee...',
+      success: 'Employee removed successfully',
+      error: 'Error removing employee'
+  })
   }
 
 
@@ -37,7 +48,7 @@ const InfoCard = ({id, email, firstName, lastName, phone, company}) => {
           onClick={() => setIsEditing(true)}
           className='border p-2 rounded mt-4 mr-2'>Update</button>
           <button 
-          onClick={() => removeEmployee(id)}
+          onClick={removingEmployee(id)}
           className='border p-2 rounded mt-4'>Remove</button>
           </div>
 

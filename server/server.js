@@ -7,7 +7,7 @@ import App from './routes/App.js'
 
 const server = express()
 
-server.use(cors({origin: ['https://zapllo-test.vercel.app', 'http://localhost:5173']}));
+server.use(cors({origin: ['https://zapllo-test.vercel.app']}));
 server.use(express.json());
 
 mongoose

@@ -3,6 +3,8 @@ import employeeSchema from '../Validation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { toast } from 'react-hot-toast'
+
 import { useEmployees } from '../context/EmployeeProvider'
 
 const UpdateEmployee = ({closeModal, employeeData}) => {
@@ -37,7 +39,11 @@ const UpdateEmployee = ({closeModal, employeeData}) => {
         
         try{
             console.log('updated employee data before sending: ', employee)
-        await updateEmployee(employeeData.id,employee)
+        toast.promise(updateEmployee(employeeData.id,employee), {
+          loading: 'updating employee...',
+          success: 'Employee updated successfully',
+          error: 'Error updating employee'
+      })
 
         console.log('submitted')
         console.log("Updated Employee added: ", employee)
