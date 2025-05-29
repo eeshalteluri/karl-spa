@@ -31,6 +31,16 @@ const employeeSchema = z.object({
     .trim()
     .min(2, {message: "Company name must be atleast 2 characters."})
     .max(20, {message: "Company name must be atmost 20 characters."}),
+
+    salary: z
+    .string()
+    .transform((val) => {
+      const num = Number(val);
+      if (isNaN(num)) throw new Error("Salary must be a number");
+      return num;
+    })
+    .refine((val) => val >= 10000, { message: "Salary must be at least 10,000" })
+    .refine((val) => val <= 1000000, { message: "Salary must not exceed 1,000,000" }),
   })
 
 export default employeeSchema

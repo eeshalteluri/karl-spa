@@ -17,7 +17,8 @@ const UpdateEmployee = ({closeModal, employeeData}) => {
         lastName: employeeData.lastName,
         email: employeeData.email,
         phone: employeeData.phone,
-        company: employeeData.company 
+        company: employeeData.company,
+        salary: employeeData.salary
 })
 
     useEffect(() => {
@@ -29,9 +30,12 @@ const UpdateEmployee = ({closeModal, employeeData}) => {
     }, [])
 
     const handleChange = (e) => {
-        setEmployee({...employee, [e.target.name]: e.target.value})
-        
-    }
+      const { name, value } = e.target;
+      setEmployee(prev => ({
+        ...prev,
+        [name]: name === "salary" ? (value === "" ? null : Number(value)) : value,
+      }));
+    };
 
 
     const submitHandler = async (e) => {
@@ -128,6 +132,21 @@ const UpdateEmployee = ({closeModal, employeeData}) => {
             required 
             className='mb-4 block w-full px-3 py-2 border-b-2 border-primary text-gray-900 focus:bg-[#e8f0fe] focus:outline-none'/>
             {errors.company && <p className='text-red-500 mb-2'>{errors.company.message}</p>}
+          </label>
+        </div>
+
+        <div>
+          <label htmlFor="salary" className=''>Salary
+            <input 
+            type='number' 
+            name="salary" 
+            id="salary"
+            {...register("salary")}
+            value={employee.salary || null}
+            onChange={handleChange} 
+            required 
+            className='block w-full px-3 py-2 border-b-2 border-primary text-gray-900 focus:bg-[#e8f0fe] focus:outline-none'/>
+            {errors.salary && <p className='text-red-500 mt-2'>{errors.salary.message}</p>}
           </label>
         </div>
 

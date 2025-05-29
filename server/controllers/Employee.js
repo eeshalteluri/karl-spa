@@ -27,7 +27,8 @@ export const addEmployee = async (req, res) => {
         lastName: employeeData.lastName,
         email: employeeData.email,
         phone: employeeData.phone,
-        company: employeeData.company
+        company: employeeData.company,
+        salary: employeeData.salary
     })
 
     await employee.save()
@@ -38,6 +39,7 @@ export const addEmployee = async (req, res) => {
         message: "Employee created successfully"
     })
     }catch(error){
+        console.log(error)
         res.status(500).json({
             success: false,
             data: null,
