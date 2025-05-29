@@ -31,8 +31,10 @@ export const addEmployee = async (req, res) => {
         firstName: employeeData.firstName,
         lastName: employeeData.lastName,
         email: employeeData.email,
+        countryCode: employeeData.countryCode,
         phone: employeeData.phone,
         company: employeeData.company,
+        currency: employeeData.currency,
         salary: employeeData.salary
     })
 
@@ -76,6 +78,7 @@ export const updateEmployee = async (req, res) => {
     try{
         const employeeId = req.params.id
         const employeeData = req.body
+        console.log("employee data to be updated: ", employeeData)
         const employee = await Employee.findByIdAndUpdate(employeeId, employeeData, {
             new: true
         })

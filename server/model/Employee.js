@@ -20,6 +20,10 @@ const employeeSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    countryCode:{
+        type: String,
+        required: true
+    },
     phone: {
         type: Number,
         required: true,
@@ -27,6 +31,10 @@ const employeeSchema = new mongoose.Schema({
     company: {
         type: String,
         required: true,
+    },
+    currency: {
+        type: String,
+        required: true
     },
     salary: {
         type: Number,

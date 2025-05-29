@@ -4,8 +4,15 @@ import { toast } from 'react-hot-toast'
 import Modal from './Modal'
 import UpdateEmployee from './UpdateEmployee'
 
-const InfoCard = ({ id, employeeId, index, email, firstName, lastName, phone, salary, company }) => {
+import { FaRegEye } from "react-icons/fa6";
+import { AiOutlineDelete } from "react-icons/ai";
+import { VscEdit } from "react-icons/vsc";
+import EmployeeCard from './EmployeeCard'
+
+
+const InfoCard = ({ id, employeeId, index, email, firstName, lastName, countryCode, phone, currency, salary, company, lastUpdated }) => {
   const [isEditing, setIsEditing] = useState(false)
+  const [isViewed, setIsViewed] = useState(false)
   const { removeEmployee } = useEmployees()
 
   const handleDelete = (id) => {
@@ -18,6 +25,9 @@ const InfoCard = ({ id, employeeId, index, email, firstName, lastName, phone, sa
 
   const openModal = () => setIsEditing(true)
   const closeModal = () => setIsEditing(false)
+  
+  const openViewModal = () => setIsViewed(true)
+  const closeViewModal = () => setIsViewed(false)
 
   return (
     <>
@@ -27,21 +37,24 @@ const InfoCard = ({ id, employeeId, index, email, firstName, lastName, phone, sa
   <td>{firstName}</td>
   <td className="hidden md:table-cell">{lastName}</td>
   <td className="hidden lg:table-cell">{email}</td>
-  <td className="hidden lg:table-cell">{phone}</td>
+  <td className="hidden lg:table-cell">+{countryCode}{phone}</td>
   <td className="hidden lg:table-cell">{company}</td>
-  <td>{salary}</td>
+  <td>{salary} {currency}</td>
   <td className="flex flex-col md:flex-row justify-center items-center gap-1 md:gap-2 py-2">
     <button
-      className="px-4 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-md transition duration-150 text-sm"
-      onClick={openModal}
+      onClick={openViewModal}
     >
-      Edit
+      <FaRegEye size={28} />
     </button>
     <button
-      className="px-4 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-md transition duration-150 text-sm"
+      onClick={openModal}
+    >
+      <VscEdit size={28} />
+    </button>
+    <button
       onClick={() => handleDelete(id)}
     >
-      Delete
+      <AiOutlineDelete size={28}/>
     </button>
   </td>
 </tr>
@@ -52,6 +65,15 @@ const InfoCard = ({ id, employeeId, index, email, firstName, lastName, phone, sa
           <UpdateEmployee
             employeeData={{ id, email, firstName, lastName, phone, company, salary }}
             closeModal={closeModal}
+          />
+        </Modal>
+      )}
+
+      {isViewed && (
+        <Modal isOpen={openViewModal} onClose={closeViewModal}>
+          <EmployeeCard
+            employeeData={{ id, employeeId, email, firstName, lastName, countryCode, phone, company, currency, salary, lastUpdated }}
+            closeModal={closeViewModal}
           />
         </Modal>
       )}

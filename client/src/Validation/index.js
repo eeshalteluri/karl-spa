@@ -20,10 +20,14 @@ const employeeSchema = z.object({
     .trim()
     .email({message: "Invalid email address."}),
 
+    countryCode:
+    z.string().trim(),
+
     phone: 
     z.string()
     .trim()
-    .length(10, 'Phone number must be 10 digits')
+    .min(10, 'Phone number must be min 10 digits')
+    .max(12, 'Phone number must be max 12 digits')
     .regex(/^\d+$/, {message: "Phone number must contain only digits"}),
 
     company: 
@@ -31,6 +35,8 @@ const employeeSchema = z.object({
     .trim()
     .min(2, {message: "Company name must be atleast 2 characters."})
     .max(20, {message: "Company name must be atmost 20 characters."}),
+
+    currency: z.string().trim(),
 
     salary: z
     .string()
