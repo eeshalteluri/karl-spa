@@ -2,12 +2,12 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 
-import { PORT, URI } from './config/index.js'
+import { PORT, URI, FRONTEND_URL } from './config/index.js'
 import App from './routes/App.js'
 
 const server = express()
 
-server.use(cors({origin: ['http://localhost:5174']}));
+server.use(cors({origin: [`${FRONTEND_URL}`]}));
 server.use(express.json());
 
 mongoose
