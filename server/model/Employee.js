@@ -5,6 +5,7 @@ const employeeSchema = new mongoose.Schema({
     employeeId:{
         type: Number,
         required: false,
+        unique: true
         },
     firstName: {
         type: String,
@@ -17,6 +18,7 @@ const employeeSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true
     },
     phone: {
         type: Number,
