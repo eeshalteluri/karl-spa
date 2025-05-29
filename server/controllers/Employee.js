@@ -1,21 +1,26 @@
 import Employee from "../model/Employee.js"
 
 export const getEmployees = async (req, res) => {
-    try{
-        const employees = await Employee.find()
-        res.status(200).json({
-            success: true,
-            data: employees,
-            message: "Employees fetched successfully"
-        })
-    }catch(error){
-        res.status(500).json({
-            success: false,
-            data: null,
-            ErrorMesssage: error
-        })
-    }
-}
+  try {
+    console.log("Connecting to Mongo...");
+    const employees = await Employee.find();
+    console.log("Employees fetched:", employees.length);
+
+    res.status(200).json({
+      success: true,
+      data: employees,
+      message: "Employees fetched successfully"
+    });
+  } catch (error) {
+    console.error("Error in getEmployees:", error.message);
+    res.status(500).json({
+      success: false,
+      data: null,
+      errorMessage: error.message
+    });
+  }
+};
+
 
 export const addEmployee = async (req, res) => {
     console.log('Recieved request data: ',req.body)
