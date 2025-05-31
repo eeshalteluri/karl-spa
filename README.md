@@ -74,13 +74,13 @@ Create a `.env` file inside the server folder, and add:
 
 - Start both client and server in separate terminals.
 
-#### on Client(Frontend)
+#### For Client(Frontend)
 
 ```bash
   cd client
   npm install
 ```
-#### on Server(Backend)
+#### For Server(Backend)
 
 ```bash
   cd server
