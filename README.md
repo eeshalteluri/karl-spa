@@ -1,4 +1,65 @@
 
+# SPA Apllication
+
+This is a full-stack web application consisting of a **React frontend (client)** and an **Express + MongoDB backend (server)**.
+## 📁 Project Structure
+
+root/
+
+├── client/ # React frontend (Vite)
+
+├── server/ # Express backend with MongoDB
+
+└── README.md # Project documentation
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend (`client/`)
+- React 18
+- Vite
+- Tailwind CSS
+- React Hook Form + Zod
+- Axios
+- React DatePicker
+- React Icons
+- Hot Toast (notifications)
+
+### Backend (`server/`)
+- Express.js
+- MongoDB & Mongoose
+- CORS
+- dotenv
+
+---
+
+## Environment Variables
+
+
+To run this project, you will need to add `.env` files. One in client directory, and other in server directory.
+
+### Frontend (client)
+Create a `.env` file inside the client folder, and add:
+`VITE_BACKEND_URL` variable
+
+`VITE_BACKEND_URL`= `http://localhost:5005` (for development)
+
+`VITE_BACKEND_URL`= `<your-backend-url>` (for production)
+
+### Backend (server)
+Create a `.env` file inside the server folder, and add:
+`URI`, `PORT`, `FRONTEND_URL` variables.
+
+`URI`=`<your-mongodb-connection-uri>`
+
+`PORT`=`5005`
+
+`FRONTEND_URL` = `http://localhost:5173` (for development)
+
+`FRONTEND_URL` = `<your-backend-url>` (for production)
+
+
 ## Installation
 
 ## Run the Application
