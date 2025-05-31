@@ -35,10 +35,6 @@ root/
 ---
 ## 🔧 Setup Instructions
 
-# Installation
-
-## Run the Application
-
 - Clone the project
 
 ```bash
