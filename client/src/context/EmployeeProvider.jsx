@@ -11,23 +11,23 @@ export const EmployeeProvider = ({children}) => {
     const [employees, setEmployees] = useState([])
 
     const getEmployees = async () => {
-        const response = await axios.get(`${BACKEND_URL}`)
+        const response = await axios.get(`${BACKEND_URL}/api/employees`)
         console.log(response.data.data)
         setEmployees(response.data.data)
     }
 
     const addEmployee = async (newEmployee) => {
-        await axios.post(`${BACKEND_URL}`, newEmployee)
+        await axios.post(`${BACKEND_URL}/api/employees`, newEmployee)
         await getEmployees()
     }
 
     const removeEmployee = async (id) => {
-        await axios.delete(`${BACKEND_URL}/${id}`)
+        await axios.delete(`${BACKEND_URL}/api/employees/${id}`)
         await getEmployees()
     }
 
     const updateEmployee = async (id, updatedEmployee) => {
-        await axios.put(`${BACKEND_URL}/${id}`, updatedEmployee)
+        await axios.put(`${BACKEND_URL}/api/employees/${id}`, updatedEmployee)
         await getEmployees()
     }
 
