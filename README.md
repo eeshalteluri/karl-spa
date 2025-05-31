@@ -33,34 +33,9 @@ root/
 - dotenv
 
 ---
+## 🔧 Setup Instructions
 
-## Environment Variables
-
-
-To run this project, you will need to add `.env` files. One in client directory, and other in server directory.
-
-### Frontend (client)
-Create a `.env` file inside the client folder, and add:
-`VITE_BACKEND_URL` variable
-
-`VITE_BACKEND_URL`= `http://localhost:5005` (for development)
-
-`VITE_BACKEND_URL`= `<your-backend-url>` (for production)
-
-### Backend (server)
-Create a `.env` file inside the server folder, and add:
-`URI`, `PORT`, `FRONTEND_URL` variables.
-
-`URI`=`<your-mongodb-connection-uri>`
-
-`PORT`=`5005`
-
-`FRONTEND_URL` = `http://localhost:5173` (for development)
-
-`FRONTEND_URL` = `<your-backend-url>` (for production)
-
-
-## Installation
+# Installation
 
 ## Run the Application
 
@@ -72,15 +47,44 @@ Create a `.env` file inside the server folder, and add:
 
 - Go to the project directory
 
+### Environment Variables
+
+
+To run this project, you will need to add `.env` files. One in client directory, and other in server directory.
+
+### Frontend (client)
+- Go to the `client` folder
+- Create a `.env` file inside the client folder, and add:
+`VITE_BACKEND_URL` variable
+
+`VITE_BACKEND_URL`= `http://localhost:5005` (for development)
+
+`VITE_BACKEND_URL`= `<your-backend-url>` (for production)
+
+### Backend (server)
+- Go to the `server` folder
+- Create a `.env` file inside the server folder, and add:
+`URI`, `PORT`, `FRONTEND_URL` variables.
+
+`URI`=`<your-mongodb-connection-uri>`
+
+`PORT`=`5005`
+
+`FRONTEND_URL` = `http://localhost:5173` (for development)
+
+`FRONTEND_URL` = `<your-backend-url>` (for production)
+
+### Installing Dependencies
+
 - Start both client and server in separate terminals.
 
-#### For Client(Frontend)
+#### for Client(Frontend)
 
 ```bash
   cd client
   npm install
 ```
-#### For Server(Backend)
+#### for Server(Backend)
 
 ```bash
   cd server
